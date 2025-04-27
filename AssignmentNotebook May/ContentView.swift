@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var assignments = ["Math Homework", "Science Project", "History Essay"]
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List(assignments, id: \.self) { assignment in
+               Text(assignment)
+            }
+            .onMove { indices, newOffset in
+                    assignments.move(fromOffsets: indices, toOffset: newOffset)
+                }
+            .onDelete { indexSet in
+                assignments.remove(atOffsets: indexSet)
+            }
+            .navigationTitle("Assignments")
+            .navigationBarItems(trailing: EditButton())
         }
-        .padding()
     }
 }
 
