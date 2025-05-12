@@ -8,14 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var assignmentList = AssignmentList()
+    @State private var showingAddAssignment = false
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach(assignmentList.assignments) { assignment in
+                    VStack(alignment: .leading) {
+                        Text(assignment.course)
+                            .font(.headline)
+                        Text(assignment.description)
+                            .font(.subheadline)
+                        Text(assignment.dueDate, style: .date)
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                }
+                .onMove { indices, newOffset in
+                    assignmentList.assignments.move(fromOffsets: indices, toOffset: newOffset)
+                }
+                .onDelete { indexSet in
+                    assignmentList.assignments.remove(atOffsets: indexSet)
+                }
+            }
+            .navigationTitle("Assignments")
+            .navigationBarItems(
+                leading: EditButton(),
+                trailing: Button(action: {
+                    showingAddAssignment = true
+                }, label: {
+                    Image(systemName: "plus")
+                })
+            )
         }
-        .padding()
+        .sheet(isPresented: $showingAddAssignment) {
+            AddAssignmentView(assignmentList: assignmentList)
+        }
     }
 }
 

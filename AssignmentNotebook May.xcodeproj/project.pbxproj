@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D5A8B02B2DBE8F3800380F57 /* Assignments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8B02A2DBE8F3800380F57 /* Assignments.swift */; };
+		D5A8B02D2DBF290D00380F57 /* AddAssignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8B02C2DBF290D00380F57 /* AddAssignmentView.swift */; };
+		D5A8B02F2DBF29FA00380F57 /* AssignmentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8B02E2DBF29FA00380F57 /* AssignmentList.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D5A8B00E2DBE8D2600380F57 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +33,9 @@
 		D5A8AFFD2DBE8D2400380F57 /* AssignmentNotebook May.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AssignmentNotebook May.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A8B00D2DBE8D2600380F57 /* AssignmentNotebook MayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AssignmentNotebook MayTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A8B0172DBE8D2600380F57 /* AssignmentNotebook MayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AssignmentNotebook MayUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5A8B02A2DBE8F3800380F57 /* Assignments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignments.swift; sourceTree = "<group>"; };
+		D5A8B02C2DBF290D00380F57 /* AddAssignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAssignmentView.swift; sourceTree = "<group>"; };
+		D5A8B02E2DBF29FA00380F57 /* AssignmentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +84,9 @@
 		D5A8AFF42DBE8D2400380F57 = {
 			isa = PBXGroup;
 			children = (
+				D5A8B02E2DBF29FA00380F57 /* AssignmentList.swift */,
+				D5A8B02C2DBF290D00380F57 /* AddAssignmentView.swift */,
+				D5A8B02A2DBE8F3800380F57 /* Assignments.swift */,
 				D5A8AFFF2DBE8D2400380F57 /* AssignmentNotebook May */,
 				D5A8B0102DBE8D2600380F57 /* AssignmentNotebook MayTests */,
 				D5A8B01A2DBE8D2600380F57 /* AssignmentNotebook MayUITests */,
@@ -236,6 +248,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5A8B02F2DBF29FA00380F57 /* AssignmentList.swift in Sources */,
+				D5A8B02B2DBE8F3800380F57 /* Assignments.swift in Sources */,
+				D5A8B02D2DBF290D00380F57 /* AddAssignmentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
