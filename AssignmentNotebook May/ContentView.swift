@@ -8,33 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var assignments = [
-        Assignment(course: "Math", description: "Chapter 5 Problems", dueDate: Date()),
-        Assignment(course: "History", description: "Essay on Civil War", dueDate: Date()),
-        Assignment(course: "Science", description: "Build a Volcano", dueDate: Date())
-    ]
     @ObservedObject var assignmentList = AssignmentList()
     @State private var showingAddAssignment = false
 
     var body: some View {
         NavigationView {
-            ForEach(assignments) { assignment in
-                VStack(alignment: .leading) {
-                    Text(assignment.course)
-                        .font(.headline)
-                    Text(assignment.description)
-                        .font(.subheadline)
-                    Text(assignment.dueDate, style: .date)
-                        .font(.caption)
-                        .foregroundColor(.gray)
+            List {
+                ForEach(assignmentList.assignments) { assignment in
+                    VStack(alignment: .leading) {
+                        Text(assignment.course)
+                            .font(.headline)
+                        Text(assignment.description)
+                            .font(.subheadline)
+                        Text(assignment.dueDate, style: .date)
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                }
+                .onMove { indices, newOffset in
+                    assignmentList.assignments.move(fromOffsets: indices, toOffset: newOffset)
+                }
+                .onDelete { indexSet in
+                    assignmentList.assignments.remove(atOffsets: indexSet)
                 }
             }
             .navigationTitle("Assignments")
-            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
-                showingAddAssignment = true
-            }) {
-                Image(systemName: "plus")
-            })
+            .navigationBarItems(
+                leading: EditButton(),
+                trailing: Button(action: {
+                    showingAddAssignment = true
+                }, label: {
+                    Image(systemName: "plus")
+                })
+            )
         }
         .sheet(isPresented: $showingAddAssignment) {
             AddAssignmentView(assignmentList: assignmentList)
