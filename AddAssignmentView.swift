@@ -13,13 +13,19 @@ struct AddAssignmentView: View {
     @State private var course = ""
     @State private var description = ""
     @State private var dueDate = Date()
-    
+
     var body: some View {
         NavigationView {
             Form {
-                TextField("Course", text: $course)
-                TextField("Description", text: $description)
-                DatePicker("Due Date", selection: $dueDate, displayedComponents: .date)
+                Section(header: Text("Course")) {
+                    TextField("Enter course name", text: $course)
+                }
+                Section(header: Text("Description")) {
+                    TextField("Enter assignment description", text: $description)
+                }
+                Section(header: Text("Due Date")) {
+                    DatePicker("Select due date", selection: $dueDate, displayedComponents: .date)
+                }
             }
             .navigationTitle("New Assignment")
             .navigationBarItems(trailing: Button("Save") {
@@ -28,10 +34,10 @@ struct AddAssignmentView: View {
                 presentationMode.wrappedValue.dismiss()
             })
         }
-
     }
 }
 
 #Preview {
-    AddAssignmentView()
+    AddAssignmentView(assignmentList: AssignmentList())
 }
+
