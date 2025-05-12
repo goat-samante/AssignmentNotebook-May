@@ -13,6 +13,9 @@ struct ContentView: View {
         Assignment(course: "History", description: "Essay on Civil War", dueDate: Date()),
         Assignment(course: "Science", description: "Build a Volcano", dueDate: Date())
     ]
+    @ObservedObject var assignmentList = AssignmentList()
+    @State private var showingAddAssignment = false
+
     var body: some View {
         NavigationView {
             ForEach(assignments) { assignment in
@@ -27,7 +30,14 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Assignments")
-            .navigationBarItems(trailing: EditButton())
+            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
+                showingAddAssignment = true
+            }) {
+                Image(systemName: "plus")
+            })
+        }
+        .sheet(isPresented: $showingAddAssignment) {
+            AddAssignmentView(assignmentList: assignmentList)
         }
     }
 }
